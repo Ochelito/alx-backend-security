@@ -49,8 +49,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'ip_tracking.middleware.IPTrackingMiddleware',
-     'ip_tracking.middleware.IPBlockMiddleware',
+    'ip_tracking.middleware.IPBlockMiddleware',
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-ip-tracking-cache',
+    }
+}
 
 ROOT_URLCONF = 'alx_backend_security.urls'
 
